@@ -2,8 +2,8 @@ FROM mesosphere/aws-cli
 
 RUN apk -v --update add jq
 
-ADD ./scripts/aws-auth .
+ADD ./scripts/aws-auth /bin
 
-RUN chmod a+x ./aws-auth
+RUN chmod a+x /bin/aws-auth
 
-ENTRYPOINT ./aws-auth
+ENTRYPOINT /bin/aws-auth
