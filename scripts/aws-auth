@@ -13,8 +13,13 @@ then
     PLUGIN_FILE=".env"
 fi
 
+if [ -z $PLUGIN_DURATION ];
+then
+    PLUGIN_DURATION="3600"
+fi
+
 echo "Assuming: ${PLUGIN_ROLE}"
-CREDS=`aws sts assume-role --role-arn ${PLUGIN_ROLE} --role-session-name=${DRONE_REPO_OWNER}-${DRONE_REPO_NAME}`
+CREDS=`aws sts assume-role --duration-seconds ${PLUGIN_DURATION} --role-arn ${PLUGIN_ROLE} --role-session-name=${DRONE_REPO_OWNER}-${DRONE_REPO_NAME}`
 
 AWS_ACCESS_KEY_ID=`echo $CREDS | jq -r '.Credentials.AccessKeyId'`
 AWS_SECRET_ACCESS_KEY=`echo $CREDS | jq -r '.Credentials.SecretAccessKey'`
