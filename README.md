@@ -15,3 +15,11 @@ pipeline:
     role: arn:aws:iam::***:role/***
     file: .creds
 ```
+
+Produces a file which looks like this:
+
+```sh
+export AWS_ACCESS_KEY_ID=xxxxxx
+export AWS_SECRET_ACCESS_KEY=yyyyy
+export AWS_SESSION_TOKEN=zzzzzz
+```
