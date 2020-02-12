@@ -11,9 +11,10 @@ pipeline:
 ```yaml
 pipeline:
   deploy:
-    image: nodefortytwo/drone-aws-role-auth
-    role: arn:aws:iam::***:role/***
-    file: .creds
+    image:    nodefortytwo/drone-aws-role-auth
+    role:     arn:aws:iam::***:role/***
+    duration: 7200
+    file:     .creds
 ```
 
 Produces a file which looks like this:
